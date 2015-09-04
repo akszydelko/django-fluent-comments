@@ -12,13 +12,11 @@
     $.fn.ready(function()
     {
         var commentform = $('form.js-comments-form');
-        if( commentform.length > 0 )
-        {
-            // Detect last active input.
-            // Submit if return is hit, or any button other then preview is hit.
-            commentform.find(':input').focus(setActiveInput).mousedown(setActiveInput);
-            commentform.submit(onCommentFormSubmit);
-        }
+
+        // Detect last active input.
+        // Submit if return is hit, or any button other then preview is hit.
+        $(document).on('focus mousedown', commentform.find(':input'), setActiveInput);
+        $(document).on('submit', commentform, onCommentFormSubmit);
 
 
         // Bind events for threaded comment reply
