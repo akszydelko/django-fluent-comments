@@ -11,11 +11,11 @@
 
     $.fn.ready(function()
     {
-        var commentform = $('form.js-comments-form');
+        var commentform = 'form.js-comments-form';
 
         // Detect last active input.
         // Submit if return is hit, or any button other then preview is hit.
-        $(document).on('focus mousedown', commentform.find(':input'), setActiveInput);
+        $(document).on('focus mousedown', $(commentform).find(':input'), setActiveInput);
         $(document).on('submit', commentform, onCommentFormSubmit);
 
 
